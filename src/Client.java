@@ -79,6 +79,8 @@ public class Client {
 
 				os.write(bytesArray);
 				os.flush();
+				
+				
 
 			} else if (protocole == 1) {
 				// We will send a class file
@@ -92,14 +94,15 @@ public class Client {
 				byte arrayBytes[] = new byte[(int) fileToSend.length()];
 				bis.read(arrayBytes);
 
+				bis.close();
+				fis.close();
+				
 				pw.println(arrayBytes.length); // send the length
 				pw.println(message); // send the message
 				pw.flush();
 
 				os.write(arrayBytes); // send the bytes
 				os.flush();
-				
-				
 
 			} else if (protocole == 2) {
 				// We will send an object (serialized)
@@ -128,6 +131,6 @@ public class Client {
 
 	public static void main(String[] args) {
 		Client client = new Client();
-		client.execute(2, "Calc&add&3,5");
+		client.execute(1, "Calc&add&3,5");
 	}
 }

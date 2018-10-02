@@ -49,6 +49,20 @@ business.Calc
 Result : 8
 Read everything
 ```
+En mode 1 => envoi de byte code, le serveur load le fichier de byte (.class) et exécute la méthode de la classe demandée :
+* Output côté client :
+```
+The result is : 8
+```
+* Output côté serveur : 
+```
+Waiting for connections...
+Connexion Ok
+Protocole ok
+Message ok 12
+Result : 8
+Read everything
+```
 
 En mode 2 => envoi d'un objet sérializé, le serveur desérialize et exécute la méthode de la classe demandée :
 * Output côté client : 

@@ -119,13 +119,26 @@ public class Server {
 			File root = new File(System.getProperty("user.dir") + "/" + "bin/");
 			URL urls[] = new URL[] { root.toURI().toURL() };
 
+			// Load the class
+			ClassLoader loader = new URLClassLoader(urls);
+			Class<?> cls = loader.loadClass("Calc");
+			Object objectInstanciate = cls.newInstance();
+
+			int result = callMethod(objectInstanciate, methodName, params);
+
+			// We send the result to the client
+			pw.println(result);
+			pw.flush();
+
 		} catch (NumberFormatException | IOException e) {
 			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (InstantiationException e) {
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			e.printStackTrace();
 		}
-
-		pw.print(200);
-		pw.flush();
-
 	}
 
 	private void processProtocolSource() {
@@ -182,7 +195,6 @@ public class Server {
 		} catch (InstantiationException e) {
 			e.printStackTrace();
 		} catch (IllegalAccessException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
