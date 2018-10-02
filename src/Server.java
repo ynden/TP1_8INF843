@@ -121,7 +121,7 @@ public class Server {
 
 			// Load the class
 			ClassLoader loader = new URLClassLoader(urls);
-			Class<?> cls = loader.loadClass("Calc");
+			Class<?> cls = loader.loadClass(className);
 			Object objectInstanciate = cls.newInstance();
 
 			int result = callMethod(objectInstanciate, methodName, params);
