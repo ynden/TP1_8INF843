@@ -28,6 +28,7 @@ public class Server {
 	public void execute() {
 		try {
 			serverSocket = new ServerSocket(6532);
+			System.err.println("Waiting for connections...");
 			clientSocket = serverSocket.accept(); // get the client socket
 			System.err.println("Connexion Ok");
 
@@ -84,19 +85,6 @@ public class Server {
 			String methodName = message.split("&")[1];
 			String params = message.split("&")[2];
 			int result = callMethod(receivedObject, methodName, params);
-			/*
-			 * Object paramsValues[] = params.split(","); Class<?> typesValues[]
-			 * = new Class[paramsValues.length];
-			 * 
-			 * typesValues[0] = paramsValues[0].getClass(); typesValues[1] =
-			 * paramsValues[1].getClass();
-			 * 
-			 * Method methodCall =
-			 * receivedObject.getClass().getMethod(methodName, typesValues); int
-			 * resultValue = (int) methodCall.invoke(receivedObject,
-			 * paramsValues); System.out.println("Result : " + resultValue);
-			 * System.out.println("Object received!");
-			 */
 
 			// We send the result to the client
 			pw.println(result);
@@ -171,11 +159,6 @@ public class Server {
 			JavaCompiler javaCompiler = ToolProvider.getSystemJavaCompiler();
 			int reponse = javaCompiler.run(null, null, null, fileToCreate.getPath());
 			System.out.println("Reponse " + reponse);
-
-			/*
-			 * URLClassLoader classLoader = URLClassLoader.newInstance(new URL[]
-			 * { fileToCreate.toURI().toURL() });
-			 */
 
 			File root = new File(System.getProperty("user.dir") + "/" + "src/");
 			URL urls[] = new URL[] { root.toURI().toURL() };

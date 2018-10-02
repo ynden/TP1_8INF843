@@ -1,6 +1,6 @@
 ## Guide d'utilisation pour la TP1 : projet collaboratif
 
-Ce projet comporte 3 fichiers principaux :
+Ce projet comporte 2 fichiers principaux :
 * Client.java
 * Server.java
 
