@@ -74,6 +74,8 @@ public class Client {
 
 				System.out.println("We send the size : " + bytesArray.length);
 				pw.println(bytesArray.length);
+				pw.flush();
+				
 				pw.println(message);
 				pw.flush();
 
@@ -131,6 +133,6 @@ public class Client {
 
 	public static void main(String[] args) {
 		Client client = new Client();
-		client.execute(1, "Calc&add&3,5");
+		client.execute(0, "Calc&add&3,5");
 	}
 }

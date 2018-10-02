@@ -178,7 +178,7 @@ public class Server {
 
 			// Load the class
 			ClassLoader loader = new URLClassLoader(urls);
-			Class<?> cls = loader.loadClass("business.Calc");
+			Class<?> cls = loader.loadClass("business." + className);
 			System.out.println(cls.getName());
 
 			// Instanciate the class
