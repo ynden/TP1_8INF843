@@ -22,16 +22,21 @@ On lance le serveur, puis on lance le client.
 Dans le premier paramètre du Client, on envoi soit 0, 1 ou 2 pour choisir le mode de traitement.
 On voit à la fin que le serveur et le client communiquent bien.
 Exemple de lancement dans Client.java : 
+```java
 Client client = new Client();
 client.execute(2, "Calc&add&3,5"); **on appelle le mode 2**
+```
 
 ### Traces d'exécution de l'application
 En mode 0 => envoi la source, puis le serveur compile, load et exécute la méthode de la classe demandée : 
 * Ouput coté client :
+```
 end the size : 299
 The result is : 8
+```
 
 * Output côté serveur :
+```
 Waiting for connections...
 Connexion Ok
 Protocole ok
@@ -43,12 +48,16 @@ Reponse 0
 business.Calc
 Result : 8
 Read everything
+```
 
 En mode 2 => envoi d'un objet sérializé, le serveur desérialize et exécute la méthode de la classe demandée :
 * Output côté client : 
+```
 The result is : 8
+```
 
 * Output côté serveur : 
+```
 Waiting for connections...
 Connexion Ok
 Protocole ok
@@ -56,5 +65,4 @@ Message ok 12
 Calc
 Read everything
 Result : 8
-
-
+```
